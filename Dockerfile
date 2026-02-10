@@ -4,10 +4,10 @@ FROM golang:1.24.3-alpine
 
 # Create a directory for our application
 # This will be the working directory inside the container
-RUN mkdir /vacatalog
+RUN mkdir /friends
 
 # Set the working directory for all subsequent commands
-WORKDIR /vacatalog
+WORKDIR /friends
 
 # First copy go.mod and go.sum files
 # This allows Docker to cache these layers and rebuild them
@@ -28,4 +28,4 @@ EXPOSE 8000
 # Build the Go application from the cmd directory
 # The -o flag specifies the output filename
 RUN cd cmd && go build -o ../vacatalog
-CMD ["./vacatalog"]
+CMD ["./friends"]

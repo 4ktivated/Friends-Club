@@ -1,93 +1,89 @@
-# VaCatalog - Job Vacancy Aggregator
+# Клуб Друзей - Backend для IT сообщества
 
-VaCatalog is a powerful job vacancy aggregator that collects and organizes job listings from multiple sources into a single, user-friendly platform. Whether you're a job seeker looking for opportunities or an employer posting positions, VaCatalog provides a seamless experience through both web interface and API endpoints.
+Клуб Друзей - это платформа для знакомств в IT сообществе и поддержания контактов между профессионалами. Backend обеспечивает API для управления профилями пользователей, мероприятиями и коммуникацией внутри сообщества.
 
-## Features
+## Возможности
 
-- 📚 Aggregate job listings from multiple sources
-- 🎨 Clean and intuitive user interface
-- 🛠️ RESTful API for programmatic access
-- 🔍 Advanced search and filtering
-- 📊 Real-time job market analytics
+- 👥 Создание и управление профилями участников
+- 🎯 Поиск и фильтрация участников по навыкам и интересам
+- 📅 Организация мероприятий и встреч
+- 💬 Система коммуникации между участниками
+- 🌐 RESTful API для интеграции
 
-## Tech Stack
+## Технологический стек
 
 - Backend: Go
-- Frontend: now it's without frontend
-- Database: PostgreSQL
-- Containerization: Docker
+- База данных: PostgreSQL
+- Контейнеризация: Docker
 
 ## Getting Started
 
-### Prerequisites
+## Установка и запуск
 
-- Go 1.20 or higher
-- Docker and Docker Compose (recommended for production)
-- Modern web browser
+### Требования
 
-### Installation
+- Go 1.20 или выше
+- Docker и Docker Compose (рекомендуется для production)
+- PostgreSQL
 
-1.Clone the repository:
+### Установка
+
+1. Клонировать репозиторий:
 
 ```bash
-git clone https://github.com/4ktivated/VaCatalog.git
-cd VaCatalog
+git clone https://github.com/4ktivated/Friends.git
+cd Friends
 ```
 
-2.Install dependencies:
+2. Установить зависимости:
 
 ```bash
 go mod download
 ```
 
-3.Set up production environment variables (copy `.env.example` to `.env` in `cmd` directory):
+3. Настроить переменные окружения (скопировать `.env.example` в `.env` в директории `cmd`):
 
 ```bash
 cp cmd/.env.example cmd/.env
 ```
 
-### Production Mode
+## Запуск приложения
 
-To start the application with production environment variables and Docker Compose:
+### Режим разработки
 
-## Running the Application
-
-### Development Mode (Database Only)
-
-To start only the database in development mode:
+Для запуска только базы данных в режиме разработки:
 
 ```bash
 docker-compose -f docker-compose.dev.yaml up -d
 go run cmd/main.go
 ```
 
-### Production Mode (Database and Application)
+### Production режим
 
-To start both database and application in production mode:
+Для запуска базы данных и приложения в production режиме:
 
 ```bash
 docker-compose -f docker-compose.prod.yaml up -d
 ```
 
-## Contributing
+## Участие в разработке
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/your-feature`)
-3. Commit your changes (`git commit -m 'Add your feature description'`)
-4. Push to the branch (`git push origin feature/your-feature`)
-5. Open a Pull Request
+1. Создайте ветку для вашей функции (`git checkout -b feature/your-feature`)
+2. Сделайте коммит изменений (`git commit -m 'Add your feature description'`)
+3. Отправьте изменения в ветку (`git push origin feature/your-feature`)
+4. Создайте Pull Request
 
-Please ensure your code follows the project's coding standards and includes appropriate tests.
+Пожалуйста, убедитесь, что ваш код соответствует стандартам проекта и включает соответствующие тесты.
 
-## License
+## Лицензия
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Этот проект лицензирован под MIT License - подробности в файле LICENSE.
 
-## Support
+## Поддержка
 
-For support, please:
+Для поддержки, пожалуйста:
 
-1. Check the documentation
-2. Search existing issues
-3. Open a new issue if needed
-4. dont contact us (we already know where to find you)
+1. Изучите документацию
+2. Поищите в существующих issue
+3. Создайте новый issue при необходимости
+4. Свяжитесь с сообществом проекта

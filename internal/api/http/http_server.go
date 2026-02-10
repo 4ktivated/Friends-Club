@@ -31,7 +31,6 @@ func (s GoVacServer) ListenAndServe(ctx context.Context, addr string) error {
 	httpMux := http.NewServeMux()
 
 	httpMux.HandleFunc("/sl", usecase.SuckLie) // test
-	httpMux.HandleFunc("/lang", usecase.ApiLang)
 
 	//metrics
 	httpMux.Handle("/metrics", promhttp.Handler())

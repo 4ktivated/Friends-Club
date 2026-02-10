@@ -8,8 +8,6 @@ import (
 	govacserver "some_app/internal/api/http"
 	"some_app/internal/metrics"
 	"some_app/internal/repository"
-	shed "some_app/internal/scheduler"
-	"some_app/pkg/parser"
 	"sync"
 	"syscall"
 
@@ -27,7 +25,7 @@ var signalToName = map[os.Signal]string{
 
 func main() {
 	ctx, cancelFunc := context.WithCancel(context.Background())
-	err := godotenv.Load("cmd/.env")
+	err := godotenv.Overload("cmd/config/.env")
 	if err != nil {
 		cancelFunc()
 	}
@@ -62,10 +60,6 @@ func main() {
 	redisRepo := repository.NewRedisRepo(rdb, logger)
 	metric := metrics.New()
 
-	//init pool os parsers
-	hhParser := parser.NewHHparser([]string{"php", "python", "golang"})
-	parserClient := parser.NewParseClient(hhParser)
-
 	wg := sync.WaitGroup{}
 
 	wg.Add(1)
@@ -88,19 +82,6 @@ func main() {
 			cancelFunc()
 
 		}
-	}()
-
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		sheduler := shed.NewShedilerPars(logger, parserClient)
-		err := sheduler.SyncOnce(ctx, logger)
-		if err != nil {
-			logger.Error("cant sync vacancy for the first time")
-		} else {
-			logger.Info("all good")
-		}
-		sheduler.RunSync(ctx)
 	}()
 
 	wg.Add(1)
